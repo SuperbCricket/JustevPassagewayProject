@@ -9,6 +9,7 @@ TagManager:
   - Door
   - doorKey
   - Wall
+  - Stalker
   layers:
   - Default
   - TransparentFX
