@@ -8,16 +8,15 @@ public class StalkerAI : MonoBehaviour
     public List<GameObject> waypoints;
     public GameObject playerTarget;
 
-    private Vector3 destination;
-
-    public int rotateSpeed;
-    private int index;
-
     public float speed;
     public float nextWaypointDistance;
+    public bool spottedPlayer;
 
+    private Vector3 destination;
+    
     Path path;
     private int currentWaypoint = 0;
+    private int index;
 
     Seeker seeker;
     Rigidbody2D rb;
@@ -26,7 +25,7 @@ public class StalkerAI : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-
+        spottedPlayer = false;
         UpdatePath();
         
     }
@@ -40,11 +39,6 @@ public class StalkerAI : MonoBehaviour
             seeker.StartPath(rb.position, destination, OnPathComplete);
         }
     }
-
-    void TrackingPlayer()
-    {
-    
-    }
         
     void OnPathComplete(Path p)
     {
@@ -55,11 +49,13 @@ public class StalkerAI : MonoBehaviour
         }
     }
 
+    public void chasingStarts()
+    {
+        spottedPlayer=true;
+    }
     // Update is called once per frame
     void FixedUpdate()
-    {
-        
-
+    { 
         // Goes To next Waypoint when at Waypoint
         if (path == null)
         {
@@ -75,19 +71,31 @@ public class StalkerAI : MonoBehaviour
         // when not at end of path
         else
         {
-            // Rotates light Towards waypoint
-            rb.transform.rotation = Quaternion.LookRotation(Vector3.forward, path.vectorPath[currentWaypoint] - rb.transform.position);
-        }
+            //Moves Stalker
+            if(spottedPlayer == true)
+            {
+                // Rotates light Towards waypoint
+                rb.transform.rotation = Quaternion.LookRotation(Vector3.forward, playerTarget.transform.position - rb.transform.position);
 
-        //Moves Player 
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = direction * speed * Time.deltaTime;
-        rb.AddForce(force);
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+                Vector2 direction = ((Vector2)playerTarget.transform.position - rb.position).normalized;
+                Vector2 force = direction * speed * 3 * Time.deltaTime;
+                rb.AddForce(force);
+            }
+            else
+            {
+                // Rotates light Towards waypoint
+                rb.transform.rotation = Quaternion.LookRotation(Vector3.forward, path.vectorPath[currentWaypoint] - rb.transform.position);
 
-        if (distance < nextWaypointDistance)
-        {
-            currentWaypoint++;
+                Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+                Vector2 force = direction * speed * Time.deltaTime;
+                rb.AddForce(force);
+                float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+
+                if (distance < nextWaypointDistance)
+                {
+                    currentWaypoint++;
+                }
+            }
         }
     }
 }

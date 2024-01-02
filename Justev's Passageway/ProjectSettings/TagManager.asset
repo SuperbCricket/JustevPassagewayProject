@@ -9,6 +9,8 @@ TagManager:
   - Door
   - doorKey
   - Wall
+  - Stalker
+  - Death
   layers:
   - Default
   - TransparentFX
