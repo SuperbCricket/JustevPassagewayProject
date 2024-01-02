@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class DeathScript : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D other)
+    StalkerAI stalkerAI;
+
+    public void Start()
+    {
+        stalkerAI = FindObjectOfType<StalkerAI>();
+    }
+    public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Stalker"))
         {
-            Debug.Log("hit!");
-            Application.Quit();
+            stalkerAI.chasingStarts();
         }
     }
 }
