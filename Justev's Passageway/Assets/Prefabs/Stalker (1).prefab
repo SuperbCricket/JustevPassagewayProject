@@ -144,7 +144,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6319155973433639616}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0, z: -0.0031022988, w: 0.99999523}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 32.78056
   m_PointLightOuterAngle: 95.91347
   m_PointLightInnerRadius: 3
-  m_PointLightOuterRadius: 7
+  m_PointLightOuterRadius: 10.35572
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 121826781742366095}
   - component: {fileID: 5491425263410349128}
   - component: {fileID: 210110620234213572}
-  - component: {fileID: 3498626566567304264}
+  - component: {fileID: 3509570004557662843}
   m_Layer: 0
   m_Name: Stalker (1)
   m_TagString: Stalker
@@ -237,7 +237,7 @@ Transform:
   - {fileID: 932289913539116979}
   - {fileID: 5082980375261816999}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &121826781742366095
 MonoBehaviour:
@@ -325,7 +325,6 @@ MonoBehaviour:
   playerTarget: {fileID: 0}
   speed: 400
   nextWaypointDistance: 3
-  spottedPlayer: 0
 --- !u!50 &210110620234213572
 Rigidbody2D:
   serializedVersion: 4
@@ -353,8 +352,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &3498626566567304264
-BoxCollider2D:
+--- !u!60 &3509570004557662843
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -385,7 +384,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.018468022, y: 1.882637}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -395,6 +394,12 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.3121743, y: 3.7583313}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.004374981, y: 5.5646744}
+      - {x: -3.534399, y: 4.7157617}
+      - {x: -0.27022356, y: 0.27166116}
+      - {x: -0.009150028, y: 0.42658663}
+      - {x: 0.25079262, y: 0.30147433}
+      - {x: 3.4031744, y: 4.7416787}
+  m_UseDelaunayMesh: 0

@@ -10,7 +10,6 @@ public class StalkerAI : MonoBehaviour
 
     public float speed;
     public float nextWaypointDistance;
-    public bool spottedPlayer;
 
     private Vector3 destination;
     
@@ -25,7 +24,6 @@ public class StalkerAI : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        spottedPlayer = false;
         UpdatePath();
         
     }
@@ -49,10 +47,6 @@ public class StalkerAI : MonoBehaviour
         }
     }
 
-    public void chasingStarts()
-    {
-        spottedPlayer=true;
-    }
     // Update is called once per frame
     void FixedUpdate()
     { 
@@ -71,31 +65,20 @@ public class StalkerAI : MonoBehaviour
         // when not at end of path
         else
         {
+            // Rotates light Towards waypoint
+            rb.transform.rotation = Quaternion.LookRotation(Vector3.forward, path.vectorPath[currentWaypoint] - rb.transform.position);
+
             //Moves Stalker
-            if(spottedPlayer == true)
+            Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+            Vector2 force = direction * speed * Time.deltaTime;
+            rb.AddForce(force);
+            float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+
+            if (distance < nextWaypointDistance)
             {
-                // Rotates light Towards waypoint
-                rb.transform.rotation = Quaternion.LookRotation(Vector3.forward, playerTarget.transform.position - rb.transform.position);
-
-                Vector2 direction = ((Vector2)playerTarget.transform.position - rb.position).normalized;
-                Vector2 force = direction * speed * 3 * Time.deltaTime;
-                rb.AddForce(force);
+                currentWaypoint++;
             }
-            else
-            {
-                // Rotates light Towards waypoint
-                rb.transform.rotation = Quaternion.LookRotation(Vector3.forward, path.vectorPath[currentWaypoint] - rb.transform.position);
-
-                Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-                Vector2 force = direction * speed * Time.deltaTime;
-                rb.AddForce(force);
-                float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-
-                if (distance < nextWaypointDistance)
-                {
-                    currentWaypoint++;
-                }
-            }
+            
         }
     }
 }

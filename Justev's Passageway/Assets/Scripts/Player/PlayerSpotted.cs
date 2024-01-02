@@ -14,7 +14,7 @@ public class DeathScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Stalker"))
         {
-            stalkerAI.chasingStarts();
+            Debug.Log("beenSpot");
         }
     }
 }

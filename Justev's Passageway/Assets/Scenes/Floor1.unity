@@ -7199,7 +7199,6 @@ GameObject:
   - component: {fileID: 1104871082}
   - component: {fileID: 1104871093}
   - component: {fileID: 1104871092}
-  - component: {fileID: 1104871091}
   - component: {fileID: 1104871086}
   - component: {fileID: 1104871087}
   - component: {fileID: 1104871090}
@@ -7333,18 +7332,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   E: {fileID: 1423901554}
---- !u!114 &1104871091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1104871079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68cfaf51bdc0e0d4aacd6a9ce82143d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1104871092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15662,6 +15649,14 @@ PrefabInstance:
     - target: {fileID: 6585362348540303278, guid: 8b576bcd7a9fa6e41957e6becb23bf14, type: 3}
       propertyPath: m_Name
       value: Stalker (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7600349380589844291, guid: 8b576bcd7a9fa6e41957e6becb23bf14, type: 3}
+      propertyPath: m_NormalMapQuality
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7600349380589844291, guid: 8b576bcd7a9fa6e41957e6becb23bf14, type: 3}
+      propertyPath: m_OverlapOperation
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
