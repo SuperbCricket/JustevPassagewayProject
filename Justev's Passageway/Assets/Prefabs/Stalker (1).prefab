@@ -191,7 +191,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 32.78056
   m_PointLightOuterAngle: 95.91347
   m_PointLightInnerRadius: 3
-  m_PointLightOuterRadius: 10.35572
+  m_PointLightOuterRadius: 8
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -323,7 +323,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   playerTarget: {fileID: 0}
+  pathTargetPosition: {x: 0, y: 0, z: 0}
   speed: 400
+  rotSpeed: 0
   nextWaypointDistance: 3
 --- !u!50 &210110620234213572
 Rigidbody2D:
@@ -396,10 +398,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.004374981, y: 5.5646744}
-      - {x: -3.534399, y: 4.7157617}
+    - - {x: 0.011929989, y: 7.309342}
+      - {x: -4.806213, y: 5.547333}
       - {x: -0.27022356, y: 0.27166116}
-      - {x: -0.009150028, y: 0.42658663}
+      - {x: 0.0071554184, y: 0.5896399}
       - {x: 0.25079262, y: 0.30147433}
-      - {x: 3.4031744, y: 4.7416787}
+      - {x: 4.7239046, y: 5.459112}
   m_UseDelaunayMesh: 0
